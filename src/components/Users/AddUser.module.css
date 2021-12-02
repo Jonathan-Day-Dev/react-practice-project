@@ -1,5 +1,5 @@
 .form {
-    @apply pt-8 flex flex-col items-center border-2 border-solid border-gray-700 bg-gray-400;
+    @apply shadow-inner mx-auto w-11/12 pt-8 flex flex-col items-center border-2 border-solid border-gray-700 bg-gray-400;
 }
 
 .form-section {
