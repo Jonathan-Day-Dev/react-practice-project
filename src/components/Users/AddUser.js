@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import styles from "./AddUser.module.css";
 
 import Card from "../UI/Card";
@@ -7,37 +7,32 @@ import ErrorModal from "../UI/ErrorModal";
 import Wrapper from '../Helpers/Wrapper';
 
 const AddUser = (props) => {
-  const [username, setUsername] = useState("");
-  const [age, setAge] = useState("");
+  const nameInputRef = useRef();
+  const ageInputRef = useRef();
+
   const [error, setError] = useState(null);
-
-  const changeUsernameHandler = (e) => {
-    setUsername(e.target.value);
-  };
-
-  const changeAgeHandler = (e) => {
-    setAge(e.target.value);
-  };
 
   const addUserHandler = (e) => {
     e.preventDefault();
-    if (username.trim().length <= 0 || age.trim().length <= 0) {
+    const enteredUsername = nameInputRef.current.value;
+    const enteredUserAge = ageInputRef.current.value;
+    if (enteredUsername.trim().length <= 0 || enteredUserAge.trim().length <= 0) {
       setError({
         title: "Invalid Input",
         message: "Please enter a vaild username and age."
       });
       return;
     };
-    if (+age <= 0) {
+    if (+enteredUserAge <= 0) {
       setError({
         title: "Invalid Age",
         message: "Please enter a valid age greater than zero."
       });
       return;
     };
-    props.onAddUser(username, age);
-    setUsername("");
-    setAge("");
+    props.onAddUser(enteredUsername, enteredUserAge);
+    nameInputRef.current.value = '';
+    ageInputRef.current.value = '';
   };
 
   const errorHandler = () => {
@@ -56,8 +51,7 @@ const AddUser = (props) => {
             <input
               type="text"
               id="username"
-              value={username}
-              onChange={changeUsernameHandler}
+              ref={nameInputRef}
               className={styles["form-section__input"]}
             />
           </div>
@@ -68,8 +62,7 @@ const AddUser = (props) => {
             <input
               type="number"
               id="age"
-              value={age}
-              onChange={changeAgeHandler}
+              ref={ageInputRef}
               className={styles["form-section__input"]}
             />
           </div>
