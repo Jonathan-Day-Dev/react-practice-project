@@ -1,0 +1,11 @@
+.btn {
+    @apply px-3 py-2 border-2 border-solid border-gray-700 mb-4 mt-4 rounded;
+}
+
+.btn:hover {
+    @apply border-gray-400 bg-gray-700 text-gray-300;
+}
+
+.btn:active {
+    @apply bg-gray-400 text-gray-700;
+}

@@ -1,6 +1,7 @@
 import styles from "./AddUser.module.css";
 
 import Card from "../UI/Card";
+import Button from '../UI/Button';
 
 const addUserHandler = (e) => {
   e.preventDefault();
@@ -30,9 +31,9 @@ const AddUser = (props) => {
             className={styles["form-section__input"]}
           />
         </div>
-        <button type="submit" className={styles["form__btn"]}>
+        <Button type="submit">
           Add User
-        </button>
+        </Button>
       </form>
     </Card>
   );
