@@ -7,7 +7,7 @@
 }
 
 .form-section__label {
-    @apply border-2 border-solid border-gray-700 w-60 text-center bg-gray-700 text-gray-300 font-semibold;
+    @apply border-2 border-solid border-gray-700 w-60 text-center bg-gray-700 text-gray-200 font-semibold;
 }
 
 .form-section__input {
